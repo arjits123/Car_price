@@ -24,7 +24,14 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e,sys)
-
+    
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        raise CustomException(e,sys)
+    
 def TrainTestSplit(X,y):
     try:
         X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=124)
